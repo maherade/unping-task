@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:unping_ui/unping_ui.dart';
 
 class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({super.key});
+  final String title;
+  final String subtitle;
+  const HeaderWidget({super.key, required this.title, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
     return   Column(
       children: [
         Text(
-          'Create Account',
+          title,
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.bold,
@@ -19,7 +21,7 @@ class HeaderWidget extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          'Join Unping and start your journey',
+          subtitle,
           style: TextStyle(
             fontSize: 16,
             color: UiColors.onBackground.withAlpha(90),

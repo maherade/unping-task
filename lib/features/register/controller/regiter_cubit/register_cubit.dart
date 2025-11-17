@@ -31,7 +31,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     'India',
   ];
 
-  void handleSubmit(BuildContext context) {
+  void signUp(BuildContext context) {
     if (formKey.currentState!.validate() && agreeToTerms) {
       isLoading = true;
       emit(RegisterLoading());
@@ -75,6 +75,39 @@ class RegisterCubit extends Cubit<RegisterState> {
         ),
       );
     }
+  }
+  void login(BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      isLoading = true;
+      emit(RegisterLoading());
+      // Simulate API call
+      Future.delayed(const Duration(seconds: 2), () {
+         isLoading = false;
+         emit(RegisterSuccess());
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => SuccessScreen(
+              name: nameController.text,
+              email: emailController.text,
+            ),
+          ),
+        );
+      });
+    }
+    else if(
+    emailController.text.isEmpty ||
+    passwordController.text.isEmpty
+    ){
+      isLoading = false;
+      emit(RegisterError());
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please fill all the fields'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+
   }
 
   void changeCheckboxValue(CheckboxState state) {

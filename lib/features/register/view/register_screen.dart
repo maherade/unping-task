@@ -37,7 +37,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         // Header
-                        HeaderWidget(),
+                        HeaderWidget(
+                          title: 'Create Account',
+                          subtitle: 'Join Unping and start your journey',
+                        ),
                         const SizedBox(height: 40),
 
                         // Full Name Field
@@ -47,7 +50,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           placeholder: 'Enter your full name',
                           textInputAction: TextInputAction.next,
                           keyboardType: TextInputType.text,
-                          prefixIcon: Icons.person_outline,
                         ),
                         const SizedBox(height: 24),
                         // Phone Number Field
@@ -57,7 +59,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           keyboardType: TextInputType.phone,
                           label: 'Full Name',
                           placeholder: 'Enter your phone number',
-                          prefixIcon: Icons.phone_android_outlined,
                         ),
                         const SizedBox(height: 24),
 
@@ -68,7 +69,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           placeholder: 'Enter your email address',
                           textInputAction: TextInputAction.next,
                           keyboardType: TextInputType.emailAddress,
-                          prefixIcon: Icons.email_outlined,
                         ),
                         const SizedBox(height: 24),
                         // Country Dropdown
@@ -95,7 +95,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           borderColor: UiColors.background,
                           text: 'Create Account',
                           onPressed: (){
-                            cubit.handleSubmit(context);
+                            cubit.signUp(context);
                           },
                           backgroundColor: UiColors.neutral800,
                           textColor: UiColors.surface,
