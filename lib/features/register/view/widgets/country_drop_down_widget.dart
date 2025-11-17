@@ -10,6 +10,7 @@ class CountryDropDownWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseDropdown<String>(
+
         placeholder: 'Select your country',
         onChanged: (value) {
           cubit.selectedCountry = value;
