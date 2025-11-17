@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:widgetbook_workspace/features/success_screen/view/success_screen.dart';
+import 'package:unping_ui/features/success_screen/view/success_screen.dart';
+import 'package:unping_ui/unping_ui.dart';
 
 part 'register_state.dart';
 
@@ -10,9 +11,9 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
+  final phoneNumberController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
   String? selectedCountry;
   List<String> selectedInterests = [];
   bool agreeToTerms = false;
@@ -28,7 +29,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     'Japan',
     'Brazil',
     'India',
-    'Other',
   ];
 
   void handleSubmit(BuildContext context) {
@@ -48,7 +48,24 @@ class RegisterCubit extends Cubit<RegisterState> {
           ),
         );
       });
-    } else if (!agreeToTerms) {
+    }
+    else if(
+    nameController.text.isEmpty ||
+    phoneNumberController.text.isEmpty ||
+    emailController.text.isEmpty ||
+    passwordController.text.isEmpty ||
+    selectedCountry == null
+    ){
+      isLoading = false;
+      emit(RegisterError());
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please fill all the fields'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+    else if (!agreeToTerms) {
       isLoading = false;
       emit(RegisterError());
       ScaffoldMessenger.of(context).showSnackBar(
@@ -60,8 +77,8 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
   }
 
-  void changeCheckboxValue(bool value) {
-    agreeToTerms = value;
+  void changeCheckboxValue(CheckboxState state) {
+    agreeToTerms = state == CheckboxState.checked;
     emit(RegisterInitial());
   }
 
@@ -69,7 +86,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
-    confirmPasswordController.dispose();
   }
 
 

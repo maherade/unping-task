@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:unping_ui/features/success_screen/view/widgets/info_box.dart';
+import 'package:unping_ui/features/success_screen/view/widgets/success_container_with_icon.dart';
+import 'package:unping_ui/features/success_screen/view/widgets/success_message.dart';
+import 'package:unping_ui/features/success_screen/view/widgets/success_title.dart';
+import 'package:unping_ui/features/success_screen/view/widgets/user_card_info.dart';
 import 'package:unping_ui/unping_ui.dart';
-import 'package:widgetbook_workspace/features/success_screen/view/widgets/info_box.dart';
-import 'package:widgetbook_workspace/features/success_screen/view/widgets/success_container_with_icon.dart';
-import 'package:widgetbook_workspace/features/success_screen/view/widgets/success_message.dart';
-import 'package:widgetbook_workspace/features/success_screen/view/widgets/success_title.dart';
-import 'package:widgetbook_workspace/features/success_screen/view/widgets/user_card_info.dart';
 
 class SuccessScreen extends StatelessWidget {
   final String name;
