@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:widgetbook_workspace/l10n/language_extension.dart';
-
-import 'package:widgetbook_workspace/l10n/unping_widgetbook_localizations.dart';
+import '../../lib/l10n/language_extension.dart';
+import '../../lib/l10n/unping_widgetbook_localizations.dart';
 
 void main() {
   group('Localization', () {

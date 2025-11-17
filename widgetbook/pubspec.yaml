@@ -16,6 +16,7 @@ dependencies:
   markdown_widget: ^2.3.2+8
   url_launcher: ^6.3.2
   flutter_localization: ^0.3.3
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_test:
